@@ -29,10 +29,9 @@ int score(String word) {
     'Z': 10,
   };
 
-  var word_score = 0;
-  word.toUpperCase().runes.forEach((int rune) {
-    var character = new String.fromCharCode(rune);
-    word_score += scores[character];
-  });
-  return word_score;
+  return word
+      .toUpperCase()
+      .runes
+      .map((int rune) => new String.fromCharCode(rune))
+      .fold(0, (int previousValue, element) => previousValue + scores[element]);
 }
